@@ -1,0 +1,26 @@
+name: Deploy to Hetzner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Hetzner via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HETZNER_HOST }}
+          username: ${{ secrets.HETZNER_USER }}
+          key: ${{ secrets.HETZNER_SSH_KEY }}
+          script: |
+            THEME_DIR="/var/www/blog.getneotiler.com/htdocs/wp-content/themes/neotiler-blog"
+            cd $THEME_DIR
+            # Local değişiklikleri temizle (pull hatası almamak için)
+            git reset --hard
+            git pull origin main
+            # WordOps Cache temizliği (FastCGI, Opcache vs.)
+            if command -v wo > /dev/null; then
+                wo clean --all
+            fi
+            echo "✅ NeoTiler Blog theme deployed successfully to Hetzner!"

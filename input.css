@@ -1,0 +1,519 @@
+@import "tailwindcss";
+
+@source "./**/*.php";
+@source "./**/*.js";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* WordPress Theme Information */
+/*
+Theme Name: NeoTiler Blog
+Theme URI: https://getneotiler.com
+Author: Veysel Okatan
+Author URI: https://getneotiler.com
+Description: Custom Tailwind CSS based highly-performant tech blog theme
+Version: 1.0.0
+Tested up to: 6.7
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: neotiler-blog
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+
+/* --- Article / Prose Content Styles --- */
+.entry-content {
+    color: var(--color-body-text, oklch(20.8% 0.042 265.755));
+    font-size: var(--font-body-size, 1.125rem);
+    line-height: var(--font-body-line-height, 1.8);
+}
+
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 {
+    font-weight: var(--font-heading-weight, 900);
+    letter-spacing: var(--font-heading-letter-spacing, -0.025em);
+    color: var(--color-heading-text, oklch(20.8% 0.042 265.755));
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.entry-content h2 {
+    font-size: 1.75rem;
+}
+
+.entry-content h3 {
+    font-size: 1.5rem;
+}
+
+.entry-content h4 {
+    font-size: 1.25rem;
+}
+
+.entry-content p {
+    margin-bottom: 1.5rem;
+}
+
+.entry-content a {
+    color: oklch(54.4% 0.22 254.8);
+    /* Modern Blue */
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.entry-content a:hover {
+    text-decoration: underline;
+}
+
+.entry-content img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.entry-content blockquote {
+    border-left: 4px solid #2563eb;
+    background: #eff6ff;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+}
+
+.entry-content code {
+    background: oklch(96.8% 0.007 247.896);
+    padding: 0.125rem 0.375rem;
+    font-size: 0.875rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.entry-content pre {
+    background: oklch(20.8% 0.042 265.755);
+    color: #fff;
+    padding: 1.25rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+.entry-content ul,
+.entry-content ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.entry-content ul {
+    list-style-type: disc;
+}
+
+.entry-content ol {
+    list-style-type: decimal;
+}
+
+.entry-content li {
+    margin-bottom: 0.5rem;
+}
+
+.entry-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.entry-content th,
+.entry-content td {
+    border: 1px solid oklch(92.9% 0.013 255.508);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+}
+
+.entry-content th {
+    background: oklch(96.8% 0.007 247.896);
+    font-weight: 700;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not(.light) {
+        --color-body-text: oklch(86.9% 0.022 252.894);
+        --color-heading-text: #fff;
+    }
+}
+
+.dark .entry-content {
+    color: var(--color-body-text, oklch(86.9% 0.022 252.894));
+}
+
+.dark .entry-content h1,
+.dark .entry-content h2,
+.dark .entry-content h3,
+.dark .entry-content h4,
+.dark .entry-content h5,
+.dark .entry-content h6 {
+    color: var(--color-heading-text, #fff);
+}
+
+.dark .entry-content blockquote {
+    background: rgba(30, 58, 138, 0.2);
+    border-left-color: #3b82f6;
+}
+
+.dark .entry-content code {
+    background: oklch(27.9% 0.041 260.031);
+}
+
+.dark .entry-content pre {
+    background: #000;
+}
+
+.dark .entry-content th {
+    background: oklch(27.9% 0.041 260.031);
+}
+
+.dark .entry-content a {
+    color: oklch(70% 0.15 250);
+}
+
+.dark .entry-content th,
+.dark .entry-content td {
+    border-color: oklch(37.2% 0.044 257.287);
+}
+
+@media (prefers-color-scheme: dark) {
+    .entry-content:not(.light *) {
+        color: var(--color-body-text, oklch(86.9% 0.022 252.894));
+    }
+
+    .entry-content:not(.light *) h1,
+    .entry-content:not(.light *) h2,
+    .entry-content:not(.light *) h3,
+    .entry-content:not(.light *) h4,
+    .entry-content:not(.light *) h5,
+    .entry-content:not(.light *) h6 {
+        color: var(--color-heading-text, #fff);
+    }
+
+    .entry-content:not(.light *) blockquote {
+        background: rgba(30, 58, 138, 0.2);
+        border-left-color: #3b82f6;
+    }
+
+    .entry-content:not(.light *) code {
+        background: oklch(27.9% 0.041 260.031);
+    }
+
+    .entry-content:not(.light *) pre {
+        background: #000;
+    }
+
+    .entry-content:not(.light *) th {
+        background: oklch(27.9% 0.041 260.031);
+    }
+
+    .entry-content:not(.light *) a {
+        color: oklch(70% 0.15 250);
+    }
+
+    .entry-content:not(.light *) th,
+    .entry-content:not(.light *) td {
+        border-color: oklch(37.2% 0.044 257.287);
+    }
+}
+
+/* --- Threaded Comments Connector Lines --- */
+.comment-list {
+    position: relative;
+    padding-left: 0;
+}
+
+.comment-list .comment-body {
+    position: relative;
+    z-index: 10;
+}
+
+.comment-list .children {
+    position: relative;
+    margin-left: 0.5rem;
+    padding-left: 1.5rem;
+    margin-top: 20px;
+    border-left: none;
+}
+
+@media (min-width: 768px) {
+    .comment-list .children {
+        margin-left: 1.5rem;
+        padding-left: 2rem;
+    }
+}
+
+.comment-list li.parent {
+    position: relative;
+}
+
+/* Master vertical line spanning from parent avatar to bottom of children */
+.comment-list li:has(> .children)::before {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    /* Start below avatar (h-10 = 2.5rem) */
+    bottom: 0;
+    left: calc(1.25rem - 1px);
+    /* Centered at 1.25rem (w-10 / 2) */
+    border-left: 2px solid oklch(92.9% 0.013 255.508);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.comment-list .children>li {
+    position: relative;
+}
+
+/* Horizontal line with curve connecting to child */
+.comment-list .children>li::before {
+    content: "";
+    position: absolute;
+    top: -24px;
+    /* Overlap with parent vertical line */
+    left: calc(-0.75rem - 1px);
+    width: calc(0.75rem + 1px - 4px);
+    height: 44px;
+    /* Curve ends exactly 20px from top (center of w-10 h-10 avatar) */
+    border-left: 2px solid oklch(92.9% 0.013 255.508);
+    border-bottom: 2px solid oklch(92.9% 0.013 255.508);
+    border-bottom-left-radius: 12px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Hide parent's vertical line past the last child's L-curve */
+.comment-list .children>li:last-child::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    /* Start exactly where the curve bends */
+    bottom: -4rem;
+    /* safely cover remaining parent line */
+    left: calc(-0.75rem - 3px);
+    width: 6px;
+    background-color: transparent;
+    /* Use a clever border instead of solid background */
+    border-left: 6px solid var(--color-white, #ffffff);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.dark .comment-list .children>li:last-child::after {
+    border-left-color: var(--color-slate-900, #0f172a);
+}
+
+@media (min-width: 768px) {
+    .comment-list li:has(> .children)::before {
+        top: 3rem;
+        /* Desktop avatar h-12 = 3rem */
+        left: calc(1.5rem - 1px);
+    }
+
+    .comment-list .children>li::before {
+        left: calc(-2rem - 1px);
+        width: calc(2rem + 1px - 10px);
+        top: -24px;
+        height: 48px;
+        /* Down to 24px (center of md:h-12) */
+        border-bottom-left-radius: 16px;
+    }
+
+    .comment-list .children>li:last-child::after {
+        top: 24px;
+        left: calc(-2rem - 3px);
+    }
+}
+
+.dark .comment-list li:has(> .children)::before,
+.dark .comment-list .children>li::before {
+    border-left-color: oklch(27.9% 0.041 260.031);
+}
+
+.dark .comment-list .children>li::before {
+    border-bottom-color: oklch(27.9% 0.041 260.031);
+}
+
+.dark .comment-list .children>li:last-child::after {
+    @apply bg-slate-900;
+}
+
+/* Floating "Add Comment" Form Styling */
+.comment-respond {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid oklch(92.9% 0.013 255.508);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.dark .comment-respond {
+    background: oklch(27.9% 0.2 260.031 / 0.3);
+    border-color: oklch(37.2% 0.044 257.287);
+}
+
+/* Nested Reply Form Integration */
+.comment-list .comment-respond {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Fix inner container when nested so it still looks clean */
+.comment-list .comment-respond .rounded-2xl {
+    border-radius: 16px;
+    background: white;
+    border: 1px solid oklch(92.9% 0.013 255.508);
+}
+
+.dark .comment-list .comment-respond .rounded-2xl {
+    background: oklch(27.9% 0.2 260.031 / 0.3);
+    border-color: oklch(37.2% 0.044 257.287);
+}
+
+/* --- Global Radius Fixes --- */
+button,
+input[type="text"],
+input[type="email"],
+input[type="submit"],
+textarea {
+    border-radius: 12px !important;
+}
+
+#submit {
+    border-radius: 9999px !important;
+    /* Force pill shape for submit button */
+}
+
+/* --- Emoji Picker Styling --- */
+emoji-picker {
+    --num-columns: 8;
+    --category-emoji-size: 1.25rem;
+    --emoji-size: 1.5rem;
+    width: 320px;
+    height: 350px;
+}
+
+.dark emoji-picker {
+    --background: #0f172a;
+    --border-color: #1e293b;
+    --button-hover-background: #1e293b;
+    --outline-color: #3b82f6;
+    --input-border-color: #1e293b;
+    --input-placeholder-color: #64748b;
+}
+
+#emoji-picker-container.scale-100 {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#emoji-picker-container.scale-90 {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+/* --- Rich Media Modal --- */
+#media-modal {
+    transition: visibility 0.3s;
+}
+
+#media-modal.hidden {
+    visibility: hidden;
+    display: none;
+}
+
+#media-modal:not(.hidden) {
+    visibility: visible;
+    display: flex;
+}
+
+#media-modal.show #media-modal-backdrop {
+    opacity: 1;
+}
+
+#media-modal.show #media-modal-card {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#media-modal-backdrop {
+    transition: opacity 0.3s ease;
+}
+
+#media-modal-card {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Modal Input Focus States */
+#media-modal input:focus {
+    box-shadow: 0 0 0 4px var(--color-primary, oklch(57.7% 0.245 27.325 / 0.1));
+}
+
+/* --- Comment Image Thumbnails --- */
+.comment-content img {
+    max-width: 300px;
+    max-height: 250px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    cursor: zoom-in;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin: 12px 0;
+    display: block;
+    border: 1px solid oklch(92.9% 0.013 255.508);
+}
+
+.dark .comment-content img {
+    border-color: oklch(27.9% 0.041 260.031);
+}
+
+.comment-content img:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+/* Lightbox Overlay */
+#lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+#lightbox-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#lightbox-img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#lightbox-overlay.show #lightbox-img {
+    transform: scale(1);
+}
