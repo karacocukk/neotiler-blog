@@ -16,7 +16,7 @@ A modern, highly performant, and customizable WordPress tech blog theme built wi
 
 ## Installation
 
-1. Download the latest `neotiler-blog.zip` from the repository releases or clone the repo.
+1. Download the latest `neotiler-blog.zip` from the [Releases Page](https://github.com/karacocukk/neotiler-blog/releases/latest) or clone the repo.
 2. Go to your WordPress admin panel: **Appearance -> Themes -> Add New**.
 3. Upload the `.zip` file and click **Install Now**.
 4. Click **Activate**.
