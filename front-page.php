@@ -154,7 +154,7 @@ get_header();
     $ad_1 = get_theme_mod('neotiler_ad_1', '');
     if (!empty($ad_1)) : 
     ?>
-    <div class="container mx-auto px-4 max-w-[1200px] flex justify-center my-4 overflow-hidden">
+    <div class="container mx-auto px-4 max-w-[1200px] flex justify-center overflow-hidden">
         <div class="w-full text-center">
             <?php echo do_shortcode($ad_1); ?>
         </div>
