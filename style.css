@@ -381,6 +381,9 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
   .mx-auto {
     margin-inline: auto;
   }
+  .\!mt-\[35px\] {
+    margin-top: 35px !important;
+  }
   .mt-1 {
     margin-top: calc(var(--spacing) * 1);
   }
