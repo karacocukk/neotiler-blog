@@ -154,7 +154,7 @@ get_header();
     $ad_1 = get_theme_mod('neotiler_ad_1', '');
     if (!empty($ad_1)) : 
     ?>
-    <div class="container mx-auto px-4 max-w-[1200px] flex justify-center mt-4 mb-8 overflow-hidden">
+    <div class="container mx-auto px-4 max-w-[1200px] flex justify-center my-4 overflow-hidden">
         <div class="w-full text-center">
             <?php echo do_shortcode($ad_1); ?>
         </div>
@@ -404,7 +404,7 @@ get_header();
         if ($i === 2) {
             $ad_2 = get_theme_mod('neotiler_ad_2', '');
             if (!empty($ad_2)) {
-                echo '<div class="w-full flex justify-center mb-12 overflow-hidden"><div class="w-full text-center">' . do_shortcode($ad_2) . '</div></div>';
+                echo '<div class="w-full flex justify-center mb-6 overflow-hidden"><div class="w-full text-center">' . do_shortcode($ad_2) . '</div></div>';
             }
         }
 
@@ -576,7 +576,7 @@ get_header();
     $ad_3 = get_theme_mod('neotiler_ad_3', '');
     if (!empty($ad_3)) : 
     ?>
-    <div class="block lg:hidden w-full flex justify-center mb-12 overflow-hidden">
+    <div class="block lg:hidden w-full flex justify-center mb-6 overflow-hidden">
         <div class="w-full text-center">
             <?php echo do_shortcode($ad_3); ?>
         </div>
@@ -667,7 +667,7 @@ get_header();
                 if (!empty($ad_3)) : 
                 ?>
                 <!-- Static Ad Area (Does not stick) -->
-                <div class="w-full flex justify-center mb-12 overflow-hidden">
+                <div class="w-full flex justify-center mb-6 overflow-hidden">
                     <div class="w-full text-center">
                         <?php echo do_shortcode($ad_3); ?>
                     </div>
