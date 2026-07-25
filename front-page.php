@@ -150,12 +150,23 @@ get_header();
     </section>
 
 
+    <?php 
+    $ad_1 = get_theme_mod('neotiler_ad_1', '');
+    if (!empty($ad_1)) : 
+    ?>
+    <div class="container mx-auto px-4 max-w-[1200px] flex justify-center mt-4 mb-8 overflow-hidden">
+        <div class="max-w-full">
+            <?php echo do_shortcode($ad_1); ?>
+        </div>
+    </div>
+    <?php endif; ?>
+
     <!-- EN POPULER YAZILAR -->
-    <section aria-label="Most Popular Posts" class="pt-8">
+    <section aria-label="<?php esc_attr_e('Most Popular Posts', 'neotiler-blog'); ?>" class="pt-8">
         <h2
             class="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-wider mb-8 text-center flex items-center justify-center gap-4">
             <span class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></span>
-            MOST POPULAR
+            <?php esc_html_e('MOST POPULAR', 'neotiler-blog'); ?>
             <span class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></span>
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-1">
@@ -205,7 +216,18 @@ get_header();
                                 class="flex flex-wrap items-center gap-1 md:gap-2 text-[10px] md:text-[11px] font-bold uppercase tracking-widest text-slate-400">
                                 <span><?php echo get_the_date('j M Y'); ?></span>
                                 <span class="text-slate-300 dark:text-slate-600">•</span>
-                                <span class="text-slate-500">NO COMMENTS</span>
+                                <span class="text-slate-500">
+                                    <?php
+                                    $comments_number = get_comments_number();
+                                    if ($comments_number == 0) {
+                                        esc_html_e('NO COMMENTS', 'neotiler-blog');
+                                    } elseif ($comments_number == 1) {
+                                        esc_html_e('1 COMMENT', 'neotiler-blog');
+                                    } else {
+                                        echo esc_html(sprintf(__('%s COMMENTS', 'neotiler-blog'), $comments_number));
+                                    }
+                                    ?>
+                                </span>
                             </div>
                         </div>
                     </a>
@@ -377,6 +399,15 @@ get_header();
     <!-- CATEGORY GRIDS (Customizer) -->
     <?php
     for ($i = 1; $i <= 3; $i++) {
+        
+        // Sadece 2. kategori (Utilities) alanından önce reklamı göster
+        if ($i === 2) {
+            $ad_2 = get_theme_mod('neotiler_ad_2', '');
+            if (!empty($ad_2)) {
+                echo '<div class="w-full flex justify-center mb-12 overflow-hidden"><div class="max-w-full">' . do_shortcode($ad_2) . '</div></div>';
+            }
+        }
+
         $cat_id = get_theme_mod("neotiler_home_cat_{$i}", '');
         if ($cat_id) {
             $cat_info = get_category($cat_id);
@@ -540,7 +571,17 @@ get_header();
             }
         }
     }
+    
+    // Mobil için 3. Reklam Alanı (Sidebar mobilde gizli olduğu için buraya ekliyoruz)
+    $ad_3 = get_theme_mod('neotiler_ad_3', '');
+    if (!empty($ad_3)) : 
     ?>
+    <div class="block lg:hidden w-full flex justify-center mb-12 overflow-hidden">
+        <div class="max-w-full">
+            <?php echo do_shortcode($ad_3); ?>
+        </div>
+    </div>
+    <?php endif; ?>
 
     <!-- LOAD MORE & STICKY SIDEBAR SECTION -->
     <section aria-label="More Popular Posts" class="pt-8 mb-16 border-t border-slate-200 dark:border-slate-800">
@@ -612,18 +653,32 @@ get_header();
                 <div class="mt-12 text-center lg:text-left">
                     <button id="load-more-btn" data-offset="9"
                         class="bg-blue-600 hover:bg-blue-700 text-white font-black text-sm uppercase tracking-wider px-8 py-4 transition-colors w-full md:w-auto min-w-[200px] shadow-lg shadow-blue-600/20">
-                        LOAD MORE
+                        <?php esc_html_e('LOAD MORE', 'neotiler-blog'); ?>
                     </button>
                 </div>
             </div>
 
-            <!-- Right Column: Sticky Sidebar -->
+            <!-- Right Column: Sidebar -->
             <div
-                class="hidden lg:block lg:col-span-4 relative border-l border-slate-100 dark:border-slate-800 lg:pl-12">
-                <aside class="sticky top-8 pt-8 lg:pt-0">
+                class="hidden lg:block lg:col-span-4 relative border-l border-slate-100 dark:border-slate-800 lg:pl-12 pt-8 lg:pt-0">
+                
+                <?php 
+                $ad_3 = get_theme_mod('neotiler_ad_3', '');
+                if (!empty($ad_3)) : 
+                ?>
+                <!-- Static Ad Area (Does not stick) -->
+                <div class="w-full flex justify-center mb-12 overflow-hidden">
+                    <div class="max-w-full">
+                        <?php echo do_shortcode($ad_3); ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <!-- Sticky Popular Posts (Slides down with user) -->
+                <aside class="sticky top-8">
                     <h2
                         class="text-xl font-black text-slate-900 dark:text-white uppercase tracking-wider mb-6 flex items-center gap-4">
-                        POPULAR POSTS
+                        <?php esc_html_e('POPULAR POSTS', 'neotiler-blog'); ?>
                         <span class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></span>
                     </h2>
 

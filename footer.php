@@ -38,8 +38,8 @@ $col4_html = get_theme_mod('footer_col4_custom_html', '');
 
 $copyright_text = get_theme_mod('footer_copyright_text', 'All rights reserved.');
 $powered_by_text = get_theme_mod('footer_powered_by_text', 'Powered by');
-$powered_by_link = get_theme_mod('footer_powered_by_link_text', 'NEO');
-$powered_by_url = get_theme_mod('footer_powered_by_url', 'https://getneotiler.com/');
+$powered_by_link = get_theme_mod('footer_powered_by_link_text', '');
+$powered_by_url = get_theme_mod('footer_powered_by_url', '');
 ?>
 
 <footer id="colophon" class="site-footer border-t border-slate-800"
@@ -215,10 +215,13 @@ $powered_by_url = get_theme_mod('footer_powered_by_url', 'https://getneotiler.co
 					// Fallback
 					?>
 					<ul class="nav-links-menu">
-						<li><a href="#">Technology</a></li>
-						<li><a href="#">Reviews</a></li>
-						<li><a href="#">Software</a></li>
-						<li><a href="#">Hardware</a></li>
+						<?php 
+						wp_list_categories(array(
+							'title_li' => '',
+							'number' => 5,
+							'depth' => 1,
+						)); 
+						?>
 					</ul>
 				<?php } ?>
 			</div>
@@ -247,10 +250,13 @@ $powered_by_url = get_theme_mod('footer_powered_by_url', 'https://getneotiler.co
 					// Fallback
 					?>
 					<ul class="nav-links-menu">
-						<li><a href="#">About Us</a></li>
-						<li><a href="#">Contact</a></li>
-						<li><a href="#">Privacy Policy</a></li>
-						<li><a href="#">Terms of Service</a></li>
+						<?php 
+						wp_list_pages(array(
+							'title_li' => '',
+							'depth' => 1,
+							'number' => 5,
+						)); 
+						?>
 					</ul>
 				<?php } ?>
 			</div>
@@ -273,29 +279,21 @@ $powered_by_url = get_theme_mod('footer_powered_by_url', 'https://getneotiler.co
 				if (!empty($col4_html)) {
 					echo do_shortcode($col4_html);
 				} elseif (get_theme_mod('footer_show_newsletter', true)) {
-					// Fallback Mailchimp URL from the code block you provided
-					$default_mailchimp_url = 'https://getneotiler.us2.list-manage.com/subscribe/post?u=88143aa1857892e3a7a873903&amp;id=1f999c82cd&amp;f_id=006ba6e0f0';
-					$mailchimp_url = get_theme_mod('footer_mailchimp_url', $default_mailchimp_url);
-
-					// Just in case it's actually empty at setting level
-					if (empty($mailchimp_url)) {
-						$mailchimp_url = $default_mailchimp_url;
-					}
+					$mailchimp_url = get_theme_mod('footer_mailchimp_url', '');
 					?>
 					<form action="<?php echo esc_url($mailchimp_url); ?>" method="post" target="_blank"
 						class="flex flex-col gap-3 mt-2">
-						<input type="email" name="EMAIL" placeholder="Your email address" required
+						<input type="email" name="EMAIL" placeholder="<?php esc_attr_e('Your email address', 'neotiler-blog'); ?>" required
 							class="bg-white border border-gray-300 text-black px-4 py-3 rounded focus:ring-2 focus:ring-primary outline-none w-full text-sm placeholder:text-gray-500 shadow-sm">
-
-						<!-- Hidden input for Mailchimp bot protection -->
-						<div aria-hidden="true" style="position: absolute; left: -5000px;">
-							<input type="text" name="b_88143aa1857892e3a7a873903_1f999c82cd" tabindex="-1" value="">
-						</div>
 
 						<button type="submit"
 							class="bg-black hover:bg-primary text-white font-semibold px-4 py-3 rounded transition-colors w-full text-sm shadow-md">
-							Subscribe
+							<?php esc_html_e('Subscribe', 'neotiler-blog'); ?>
 						</button>
+						
+						<?php if (empty($mailchimp_url) && current_user_can('edit_theme_options')): ?>
+							<p class="text-xs text-red-400 mt-1"><?php esc_html_e('Please set your Form URL in Customizer.', 'neotiler-blog'); ?></p>
+						<?php endif; ?>
 					</form>
 				<?php } ?>
 			</div>

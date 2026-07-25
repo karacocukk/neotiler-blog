@@ -805,14 +805,14 @@ function neotiler_blog_customize_register($wp_customize)
 		'type' => 'text',
 	));
 
-	$wp_customize->add_setting('footer_powered_by_link_text', array('default' => 'NEO', 'sanitize_callback' => 'sanitize_text_field'));
+	$wp_customize->add_setting('footer_powered_by_link_text', array('default' => '', 'sanitize_callback' => 'sanitize_text_field'));
 	$wp_customize->add_control('footer_powered_by_link_text', array(
 		'label' => esc_html__('Powered By Link Text', 'neotiler-blog'),
 		'section' => 'neotiler_footer_copyright',
 		'type' => 'text',
 	));
 
-	$wp_customize->add_setting('footer_powered_by_url', array('default' => 'https://getneotiler.com/', 'sanitize_callback' => 'esc_url_raw'));
+	$wp_customize->add_setting('footer_powered_by_url', array('default' => '', 'sanitize_callback' => 'esc_url_raw'));
 	$wp_customize->add_control('footer_powered_by_url', array(
 		'label' => esc_html__('Powered By URL', 'neotiler-blog'),
 		'section' => 'neotiler_footer_copyright',
@@ -846,6 +846,48 @@ function neotiler_blog_customize_register($wp_customize)
 			'choices' => $cat_choices,
 		));
 	}
+
+	// ==========================
+	// Advertisement Spaces
+	// ==========================
+	$wp_customize->add_section('neotiler_ads_section', array(
+		'title' => esc_html__('Advertisement Areas', 'neotiler-blog'),
+		'description' => esc_html__('Paste your AdSense or custom ad HTML/JS code here. Leave blank to hide.', 'neotiler-blog'),
+		'priority' => 120,
+	));
+
+	// Ad Space 1: Above Most Popular (728x90)
+	$wp_customize->add_setting('neotiler_ad_1', array(
+		'default' => '',
+	));
+	$wp_customize->add_control('neotiler_ad_1', array(
+		'label' => esc_html__('Ad Space 1 (Above MOST POPULAR)', 'neotiler-blog'),
+		'description' => esc_html__('Recommended size: 728x90', 'neotiler-blog'),
+		'section' => 'neotiler_ads_section',
+		'type' => 'textarea',
+	));
+
+	// Ad Space 2: Above Categories (728x90)
+	$wp_customize->add_setting('neotiler_ad_2', array(
+		'default' => '',
+	));
+	$wp_customize->add_control('neotiler_ad_2', array(
+		'label' => esc_html__('Ad Space 2 (Above Categories/Utilities)', 'neotiler-blog'),
+		'description' => esc_html__('Recommended size: 728x90', 'neotiler-blog'),
+		'section' => 'neotiler_ads_section',
+		'type' => 'textarea',
+	));
+
+	// Ad Space 3: Above Sidebar Popular Posts
+	$wp_customize->add_setting('neotiler_ad_3', array(
+		'default' => '',
+	));
+	$wp_customize->add_control('neotiler_ad_3', array(
+		'label' => esc_html__('Ad Space 3 (Sidebar above Popular Posts)', 'neotiler-blog'),
+		'description' => esc_html__('Recommended size: 300x250 or 336x280', 'neotiler-blog'),
+		'section' => 'neotiler_ads_section',
+		'type' => 'textarea',
+	));
 }
 add_action('customize_register', 'neotiler_blog_customize_register');
 
