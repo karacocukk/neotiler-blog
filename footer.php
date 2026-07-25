@@ -331,8 +331,37 @@ $powered_by_url = get_theme_mod('footer_powered_by_url', '');
 </footer><!-- #colophon -->
 </div><!-- #page -->
 
-<?php wp_footer(); ?>
-
+    <!-- AdSense Debugger Script -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+            console.log("=== AD SENSE DEBUGGER START ===");
+            var ads = document.querySelectorAll('.adsbygoogle');
+            if (ads.length === 0) {
+                console.log("Sitede hic .adsbygoogle class'li element bulunamadi. (Adblock komple ucurmus olabilir)");
+            }
+            ads.forEach(function(ad, index) {
+                var wrapper = ad.closest('div.container') || ad.parentElement;
+                var rect = ad.getBoundingClientRect();
+                var wrapperRect = wrapper.getBoundingClientRect();
+                var computedStyle = window.getComputedStyle(ad);
+                
+                console.log("Reklam #" + (index + 1) + ":");
+                console.log("- Status:", ad.getAttribute('data-ad-status') || 'Durum belirtilmemis (Engellenmis/Yuklenmemis)');
+                console.log("- <ins> Yuksekligi (Height):", rect.height + "px");
+                console.log("- Kapsayici (Wrapper) Yuksekligi:", wrapperRect.height + "px");
+                console.log("- Display durumu:", computedStyle.display);
+                console.log("- İcerik (HTML):", ad.innerHTML === "" ? "BOS" : "Iframe/Icerik var");
+                
+                // Eger yukseklik 50px'den buyukse ve ad-status bossa veya unfilled ise:
+                if (wrapperRect.height > 50 && (ad.getAttribute('data-ad-status') === 'unfilled' || computedStyle.display === 'none' || ad.innerHTML === "")) {
+                    console.warn("UYARI: #" + (index + 1) + " reklam alani bos ama ekranda " + wrapperRect.height + "px yer kapliyor!");
+                }
+            });
+            console.log("=== AD SENSE DEBUGGER END ===");
+        }, 3000); // Sayfa yuklendikten 3 saniye sonra kontrol et (AdSense gecikmesini hesaba katarak)
+    });
+    </script>
+    <?php wp_footer(); ?>
 </body>
-
 </html>
