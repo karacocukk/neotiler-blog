@@ -162,7 +162,7 @@ get_header();
     <?php endif; ?>
 
     <!-- EN POPULER YAZILAR -->
-    <section aria-label="<?php esc_attr_e('Most Popular Posts', 'neotiler-blog'); ?>" class="pt-8">
+    <section aria-label="<?php esc_attr_e('Most Popular Posts', 'neotiler-blog'); ?>" class="pt-4">
         <h2
             class="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-wider mb-8 text-center flex items-center justify-center gap-4">
             <span class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></span>
