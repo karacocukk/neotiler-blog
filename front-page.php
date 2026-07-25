@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-<div class="container mx-auto px-4 max-w-[1200px] pt-8 pb-16 space-y-16">
+<div class="container mx-auto px-4 max-w-[1200px] pt-8 pb-16 space-y-6">
 
     <!-- HERO SECTION -->
     <section aria-label="Hero Section" class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6">
@@ -162,7 +162,7 @@ get_header();
     <?php endif; ?>
 
     <!-- EN POPULER YAZILAR -->
-    <section aria-label="<?php esc_attr_e('Most Popular Posts', 'neotiler-blog'); ?>" class="pt-4">
+    <section aria-label="<?php esc_attr_e('Most Popular Posts', 'neotiler-blog'); ?>" class="pt-0">
         <h2
             class="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-wider mb-8 text-center flex items-center justify-center gap-4">
             <span class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></span>
