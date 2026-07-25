@@ -6,7 +6,7 @@ Theme URI: https://getneotiler.com
 Author: Veysel Okatan
 Author URI: https://getneotiler.com
 Description: Custom Tailwind CSS based highly-performant tech blog theme
-Version: 1.0.1
+Version: 1.0.2
 Tested up to: 6.7
 Requires PHP: 8.0
 License: GNU General Public License v2 or later
