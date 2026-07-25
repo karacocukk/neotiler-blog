@@ -517,3 +517,8 @@ emoji-picker {
 #lightbox-overlay.show #lightbox-img {
     transform: scale(1);
 }
+
+/* Hide unfilled AdSense units to prevent large blank spaces for AdBlock users */
+ins.adsbygoogle[data-ad-status="unfilled"] {
+    display: none !important;
+}

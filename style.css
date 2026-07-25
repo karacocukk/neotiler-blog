@@ -381,6 +381,9 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
   .mx-auto {
     margin-inline: auto;
   }
+  .mt-1 {
+    margin-top: calc(var(--spacing) * 1);
+  }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
@@ -1322,6 +1325,9 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
   }
   .text-pink-600 {
     color: var(--color-pink-600);
+  }
+  .text-red-400 {
+    color: var(--color-red-400);
   }
   .text-red-500 {
     color: var(--color-red-500);
@@ -2903,6 +2909,9 @@ emoji-picker {
 }
 #lightbox-overlay.show #lightbox-img {
   transform: scale(1);
+}
+ins.adsbygoogle[data-ad-status="unfilled"] {
+  display: none !important;
 }
 @property --tw-translate-x {
   syntax: "*";
